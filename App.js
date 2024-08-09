@@ -9,9 +9,8 @@ import {
   Keyboard,
 } from 'react-native';
 import Header from './components/Header';
-import Todos from './components/Todos';
+import TodosItem from './components/TodosItem';
 import AddTodos from './components/AddTodos';
-import Sandbox from './components/Sandbox';
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -39,7 +38,6 @@ export default function App() {
   };
 
   return (
-    // <Sandbox />
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <StatusBar style="auto" />
@@ -50,7 +48,7 @@ export default function App() {
             <FlatList
               data={todos}
               renderItem={({ item }) => (
-                <Todos item={item} pressHandler={pressHandler} />
+                <TodosItem item={item} pressHandler={pressHandler} />
               )}
             />
           </View>
@@ -68,9 +66,11 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    flex: 1,
   },
 
   list: {
+    flex: 1,
     marginTop: 20,
   },
 });
